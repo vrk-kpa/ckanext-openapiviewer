@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Swagger UI</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/swagger-ui/dist/swagger-ui.css" >
+  <link rel="stylesheet" type="text/css" href="{{ h.url_for_static('/swagger-ui/dist/swagger-ui.css') }}" >
   <link rel="icon" type="image/png" href="https://www2.gov.bc.ca/favicon.ico" />
   <style>
     html
@@ -66,8 +66,8 @@
 
 <div id="swagger-ui"></div>
 
-<script src="/swagger-ui/dist/swagger-ui-bundle.js"> </script>
-<script src="/swagger-ui/dist/swagger-ui-standalone-preset.js"> </script>
+<script src="{{ h.url_for_static('/swagger-ui/dist/swagger-ui-bundle.js') }}"> </script>
+<script src="{{ h.url_for_static('/swagger-ui/dist/swagger-ui-standalone-preset.js') }}"> </script>
 <script>
 window.onload = function() {
   // Build a system

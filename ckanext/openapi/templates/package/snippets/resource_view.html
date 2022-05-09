@@ -39,7 +39,11 @@
         </p>
       </div>
       {% if not to_preview %}
-        {% set current_filters = request.str_GET.get('filters') %}
+        {% if h.ckan_version().split('.')|map('int')|list >= [2, 9, 0] %}
+          {% set current_filters = request.args.get('filters') %}
+        {% else %}
+          {% set current_filters = request.str_GET.get('filters') %}
+        {% endif %}
         {% if current_filters %}
           {% set src = h.url(qualified=true, controller='package',
                              action='resource_view', id=package['name'],

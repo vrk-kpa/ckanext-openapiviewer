@@ -56,10 +56,10 @@ class OpenApiViewPlugin(p.SingletonPlugin):
 
     # IResourceController
 
-    def after_update(self, context, resource):
+    def after_dataset_update(self, context, resource):
         self.add_default_views(context, resource)
 
-    def after_create(self, context, resource):
+    def after_dataset_create(self, context, resource):
         self.add_default_views(context, resource)
 
     # Other functions

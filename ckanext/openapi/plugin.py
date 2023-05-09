@@ -57,9 +57,17 @@ class OpenApiViewPlugin(p.SingletonPlugin):
     # IResourceController
 
     def after_update(self, context, resource):
+        '''CKAN <2.10 compatibility'''
+        return self.after_resource_update(context, resource)
+
+    def after_resource_update(self, context, resource):
         self.add_default_views(context, resource)
 
     def after_create(self, context, resource):
+        '''CKAN <2.10 compatibility'''
+        return self.after_resource_create(context, resource)
+
+    def after_resource_create(self, context, resource):
         self.add_default_views(context, resource)
 
     # Other functions

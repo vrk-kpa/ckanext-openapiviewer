@@ -14,7 +14,7 @@ class OpenApiViewPlugin(p.SingletonPlugin):
     p.implements(p.IResourceController, inherit=True)
 
     # constants
-    supported_formats = ['openapi-json']
+    supported_formats = ['openapi-json', 'rest']
     view_type = 'openapi_view'
 
     # IConfigurer

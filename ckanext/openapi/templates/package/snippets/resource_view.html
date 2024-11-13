@@ -3,14 +3,14 @@
 <div id="view-{{ resource_view['id'] }}" class="resource-view" data-id="{{ resource_view['id'] }}" data-title="{{ resource_view['title'] }}" data-description="{{ resource_view['descripion'] }}">
   
   <a class="btn pull-right"
-     href="{{ h.url('resource_view', id=package['name'], resource_id=resource['id'], view_id=resource_view['id'], qualified=True) }}" target="_blank">
+     href="{{ h.url_for('resource_view', id=package['name'], resource_id=resource['id'], view_id=resource_view['id'], qualified=True) }}" target="_blank">
     {% trans %}Open in new tab{% endtrans %}
   </a>
   <a class="btn pull-right"
      href="#embed-{{ resource_view['id'] }}"
      data-module="resource-view-embed"
      data-module-id="{{ resource_view['id'] }}"
-     data-module-url="{{ h.url('resource_view', id=package['name'], resource_id=resource['id'], view_id=resource_view['id'], qualified=True) }}">
+     data-module-url="{{ h.url_for('resource_view', id=package['name'], resource_id=resource['id'], view_id=resource_view['id'], qualified=True) }}">
     <i class="icon-code"></i>
     {{ _("Embed") }}
   </a>
@@ -45,20 +45,20 @@
           {% set current_filters = request.str_GET.get('filters') %}
         {% endif %}
         {% if current_filters %}
-          {% set src = h.url(qualified=true, controller='package',
+          {% set src = h.url_for(qualified=true, controller='package',
                              action='resource_view', id=package['name'],
                              resource_id=resource['id'],
                              view_id=resource_view['id'],
                              filters=current_filters)  %}
         {% else %}
-          {% set src = h.url(qualified=true, controller='package',
+          {% set src = h.url_for(qualified=true, controller='package',
                              action='resource_view', id=package['name'],
                              resource_id=resource['id'],
                              view_id=resource_view['id'])  %}
         {% endif %}
       {% else %}
         {# When previewing we need to stick the whole resource_view as a param as there is no other way to pass to information on to the iframe #}
-        {% set src = h.url(qualified=true, controller='package', action='resource_view', id=package['name'], resource_id=resource['id']) + '?' + h.urlencode({'resource_view': h.dump_json(resource_view)}) %}
+        {% set src = h.url_for(qualified=true, controller='package', action='resource_view', id=package['name'], resource_id=resource['id']) + '?' + h.urlencode({'resource_view': h.dump_json(resource_view)}) %}
       {% endif %}
       <iframe src="{{ src }}" frameborder="0" width="100%" data-module="data-viewer" allowfullscreen>
         <p>{{ _('Your browser does not support iframes.') }}</p>
